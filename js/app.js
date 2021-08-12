@@ -5,6 +5,7 @@ let alertuser = alert(username + ', welcome to my world!');
 let place = prompt('Do I live in California?');
 let placeConverted = place.toLowerCase();
 let correctAns = 0;
+let toGiveRandomNum = 1;
 if (placeConverted === 'yes' || placeConverted === 'y') {
    // console.log('You are correct!');
    alert('You are correct!');
@@ -69,38 +70,43 @@ if (heightConverted === 'yes' || heightConverted === 'y') {
    alert('Try that 5 hour energy drink!');
 }
 let randomNum = Math.floor((Math.random() * 50) + 1);
-let shot = 0 ;
+console.log(randomNum);
+let shot = 0;
 let gnumber;
-while(randomNum !== gnumber && shot < 4){
+while (randomNum !== gnumber && shot < 4) {
    let guess = prompt('Guess a number between 1-50!');
    gnumber = parseInt(guess);
-   if(randomNum < gnumber){
+   if (randomNum < gnumber) {
       alert('Too high, try again!');
-   }else if(randomNum > gnumber){
+   } else if (randomNum > gnumber) {
       alert('Too low, try again!');
-   }else{
+   } else if (randomNum === gnumber) {
+      toGiveRandomNum++;
       alert('Good Job! you got it.');
       correctAns++;
    }
-shot++;
+   shot++;
 }
-let favoriteColors = ['bronze', 'beige', 'brown','blurple','burgundy'];
+if (toGiveRandomNum !== 2) {
+   alert('Correct answer is ' + randomNum);
+}
 let guess = 0;
 let rightAns = false;
-while(guess<7 && rightAns === true){
-   let color = prompt('What is my favorite color?');
-   for (let index = 0; index < favoriteColors.length; index++){
-      let colorGuess = favoriteColor[index];
-      if(color === colorGuess){
+let favoriteColors = ['bronze', 'beige', 'brown', 'blurple', 'burgundy'];
+while (guess < 7 && rightAns === false) {
+   let color = prompt('What are my favorite colors?');
+   for (let index = 0; index < favoriteColors.length; index++) {
+      let colorGuess = favoriteColors[index];
+      if (color === colorGuess) {
          alert('You are pretty clever!');
          rightAns = true;
-      }else if(rightAns === false){
-         alert('EEEEERRRR TRY AGAIN!')
+         correctAns++;
       }
-      guess++;
+   }
+   guess++;
+   if (rightAns === false) {
+      alert('EEEEERRRR TRY AGAIN!');
    }
 }
-
-
-
-let finalalert = alert('Congrats! ' + username + ', you are eligible for participation trophy!');
+alert('My favorite colors are ' + favoriteColors[0] + ', ' + favoriteColors[1] + ', ' + favoriteColors[2] + ', ' + favoriteColors[3] + ', ' + favoriteColors[4]);
+let finalalert = alert('Congrats ' + username + ', you gave ' + correctAns + ' correct answers out of 7 and is eligible for participation trophy!');
